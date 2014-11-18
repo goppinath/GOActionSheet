@@ -14,6 +14,7 @@
 		79455C911A1BB3B90085F540 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79455C901A1BB3B90085F540 /* Images.xcassets */; };
 		79455C941A1BB3BA0085F540 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79455C921A1BB3BA0085F540 /* LaunchScreen.xib */; };
 		79455CA01A1BB3BA0085F540 /* GOActionSheetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 79455C9F1A1BB3BA0085F540 /* GOActionSheetTests.m */; };
+		79455CAC1A1BB4D30085F540 /* GOActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 79455CAB1A1BB4D30085F540 /* GOActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		79455C991A1BB3BA0085F540 /* GOActionSheetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GOActionSheetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79455C9E1A1BB3BA0085F540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79455C9F1A1BB3BA0085F540 /* GOActionSheetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GOActionSheetTests.m; sourceTree = "<group>"; };
+		79455CAA1A1BB4D30085F540 /* GOActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOActionSheet.h; sourceTree = "<group>"; };
+		79455CAB1A1BB4D30085F540 /* GOActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 		79455C821A1BB3B90085F540 /* GOActionSheet */ = {
 			isa = PBXGroup;
 			children = (
+				79455CA91A1BB46C0085F540 /* lib */,
 				79455C871A1BB3B90085F540 /* AppDelegate.h */,
 				79455C881A1BB3B90085F540 /* AppDelegate.m */,
 				79455C8A1A1BB3B90085F540 /* ViewController.h */,
@@ -117,6 +121,15 @@
 				79455C9E1A1BB3BA0085F540 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79455CA91A1BB46C0085F540 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				79455CAA1A1BB4D30085F540 /* GOActionSheet.h */,
+				79455CAB1A1BB4D30085F540 /* GOActionSheet.m */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +235,7 @@
 				79455C8C1A1BB3B90085F540 /* ViewController.m in Sources */,
 				79455C891A1BB3B90085F540 /* AppDelegate.m in Sources */,
 				79455C861A1BB3B90085F540 /* main.m in Sources */,
+				79455CAC1A1BB4D30085F540 /* GOActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

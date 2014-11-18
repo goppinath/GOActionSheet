@@ -8,15 +8,41 @@
 
 #import "ViewController.h"
 
+#import "GOActionSheet.h"
+
 @interface ViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    
+    GOActionSheet *actionSheet_;
+}
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)actionBBiTapped:(id)sender {
+    
+    actionSheet_ = [GOActionSheet actionSheetWithTitle:@"GOActionSheet" cancelActionSheetButton:[GOActionSheetButton actionSheetButtonWithTitle:@"Cancel" selectionHandler:^(GOActionSheetButton *actionSheetButton) {
+        
+        NSLog(@"%@", @"Cancel button tapped");
+    }]];
+    
+    [actionSheet_ addActionSheetButton:[GOActionSheetButton actionSheetButtonWithTitle:@"Action 1" selectionHandler:^(GOActionSheetButton *actionSheetButton) {
+        
+        NSLog(@"%@", @"Action 1 button tapped");
+    }]];
+    
+    [actionSheet_ addActionSheetButton:[GOActionSheetButton actionSheetButtonWithTitle:@"Action 2" selectionHandler:^(GOActionSheetButton *actionSheetButton) {
+        
+        NSLog(@"%@", @"Action 2 button tapped");
+    }]];
+    
+    [actionSheet_ showFromBarButtonItem:sender animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
