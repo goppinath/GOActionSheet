@@ -25,9 +25,13 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (IBAction)actionBBiTapped:(id)sender {
+- (IBAction)actionBBITapped:(id)sender {
     
-    actionSheet_ = [GOActionSheet actionSheetWithTitle:@"GOActionSheet" cancelActionSheetButton:[GOActionSheetButton actionSheetButtonWithTitle:@"Cancel" selectionHandler:^(GOActionSheetButton *actionSheetButton) {
+    actionSheet_ = [GOActionSheet actionSheetWithTitle:@"GOActionSheet" destructiveActionSheetButton:[GOActionSheetButton actionSheetButtonWithTitle:@"Destruct" selectionHandler:^(GOActionSheetButton *actionSheetButton) {
+        
+        NSLog(@"%@", @"Destructive button tapped");
+        
+    }] cancelActionSheetButton:[GOActionSheetButton actionSheetButtonWithTitle:@"Cancel" selectionHandler:^(GOActionSheetButton *actionSheetButton) {
         
         NSLog(@"%@", @"Cancel button tapped");
     }]];
@@ -41,6 +45,8 @@
         
         NSLog(@"%@", @"Action 2 button tapped");
     }]];
+    
+//    [actionSheet_ setDestructiveButtonIndex:1];
     
     [actionSheet_ showFromBarButtonItem:sender animated:YES];
 }

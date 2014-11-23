@@ -52,10 +52,10 @@
     
     UIActionSheet *actionSheet_;
     
-    GOActionSheetButton *cancelActionSheetButton_;
+    GOActionSheetButton *cancelActionSheetButton_, *destructiveActionSheetButton_;
 }
 
-- (instancetype)initWithTitle:(NSString *)title cancelActionSheetButton:(GOActionSheetButton *)cancelActionSheetButton {
+- (instancetype)initWithTitle:(NSString *)title destructiveActionSheetButton:(GOActionSheetButton *)destructiveActionSheetButton cancelActionSheetButton:(GOActionSheetButton *)cancelActionSheetButton {
     
     if (self = [super init]) {
         
@@ -65,13 +65,24 @@
         [actionSheet_ setTitle:title];
         
         cancelActionSheetButton_ = cancelActionSheetButton;
+        destructiveActionSheetButton_ = destructiveActionSheetButton;
     }
     return self;
 }
 
++ (instancetype)actionSheetWithTitle:(NSString *)title destructiveActionSheetButton:(GOActionSheetButton *)destructiveActionSheetButton cancelActionSheetButton:(GOActionSheetButton *)cancelActionSheetButton {
+    
+    return [[self alloc] initWithTitle:title destructiveActionSheetButton:destructiveActionSheetButton cancelActionSheetButton:cancelActionSheetButton];
+}
+
++ (instancetype)actionSheetWithTitle:(NSString *)title destructiveActionSheetButton:(GOActionSheetButton *)destructiveActionSheetButton {
+    
+    return [[self alloc] initWithTitle:title destructiveActionSheetButton:destructiveActionSheetButton cancelActionSheetButton:nil];
+}
+
 + (instancetype)actionSheetWithTitle:(NSString *)title cancelActionSheetButton:(GOActionSheetButton *)cancelActionSheetButton {
     
-    return [[self alloc] initWithTitle:title cancelActionSheetButton:cancelActionSheetButton];
+    return [[self alloc] initWithTitle:title destructiveActionSheetButton:nil cancelActionSheetButton:cancelActionSheetButton];
 }
 
 - (NSMutableArray *)buttons {
@@ -89,7 +100,23 @@
     [self.buttons insertObject:actionSheetButton atIndex:0];
 }
 
+- (void)addDestructiveActionSheetButton:(GOActionSheetButton *)destructiveActionSheetButton {
+    
+    destructiveActionSheetButton_ = destructiveActionSheetButton;
+}
+
+- (void)addCancelActionSheetButton:(GOActionSheetButton *)cancelActionSheetButton {
+    
+    cancelActionSheetButton_ = cancelActionSheetButton;
+}
+
 - (void)prepareActionSheet {
+    
+    if (destructiveActionSheetButton_) {
+        
+        [self.buttons insertObject:destructiveActionSheetButton_ atIndex:0];
+        [actionSheet_ setDestructiveButtonIndex:0];
+    }
     
     for (GOActionSheetButton *actionSheetButton in self.buttons) {
         
@@ -102,6 +129,47 @@
         [actionSheet_ addButtonWithTitle:cancelActionSheetButton_.title];
         [actionSheet_ setCancelButtonIndex:self.buttons.count - 1];
     }
+}
+
+#pragma mark - other useful methods from Apple
+
+// TODO:
+//- (void)setDestructiveButtonIndex:(NSInteger)destructiveButtonIndex  {
+//    
+//    if (destructiveButtonIndex < self.buttons.count) {
+//        
+//        destructiveActionSheetButton_ = [self.buttons objectAtIndex:destructiveButtonIndex];
+//    }
+//    else {
+//        
+//        destructiveActionSheetButton_ = nil;
+//    }
+//    
+//    [actionSheet_ setDestructiveButtonIndex:destructiveButtonIndex];
+//}
+//
+//- (void)setCancelButtonIndex:(NSInteger)cancelButtonIndex {
+//    
+//    if (cancelButtonIndex < self.buttons.count) {
+//        
+//        cancelActionSheetButton_ = [self.buttons objectAtIndex:cancelButtonIndex];
+//    }
+//    else {
+//        
+//        cancelActionSheetButton_ = nil;
+//    }
+//    
+//    [actionSheet_ setCancelButtonIndex:cancelButtonIndex];
+//}
+
+- (BOOL)visible {
+    
+    return actionSheet_.isVisible;
+}
+
+- (NSUInteger)numberOfButtons {
+    
+    return actionSheet_.numberOfButtons;
 }
 
 #pragma mark - show methods from Apple

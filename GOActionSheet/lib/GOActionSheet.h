@@ -26,7 +26,7 @@
 
 @property (strong, nonatomic) NSString *title;
 
-@property (nonatomic, copy) void (^selectionHandler)(GOActionSheetButton *actionSheetButton);
+@property (copy) void (^selectionHandler)(GOActionSheetButton *actionSheetButton);
 
 + (instancetype)actionSheetButtonWithTitle:(NSString *)title selectionHandler:(void (^)(GOActionSheetButton *actionSheetButton))selectionHandler;
 
@@ -36,9 +36,20 @@
 
 @interface GOActionSheet : NSObject
 
++ (instancetype)actionSheetWithTitle:(NSString *)title destructiveActionSheetButton:(GOActionSheetButton *)destructiveActionSheetButton cancelActionSheetButton:(GOActionSheetButton *)cancelActionSheetButton;
++ (instancetype)actionSheetWithTitle:(NSString *)title destructiveActionSheetButton:(GOActionSheetButton *)destructiveActionSheetButton;
 + (instancetype)actionSheetWithTitle:(NSString *)title cancelActionSheetButton:(GOActionSheetButton *)cancelActionSheetButton;
 
 - (void)addActionSheetButton:(GOActionSheetButton *)actionSheetButton;
+- (void)addDestructiveActionSheetButton:(GOActionSheetButton *)destructiveActionSheetButton;
+- (void)addCancelActionSheetButton:(GOActionSheetButton *)cancelActionSheetButton;
+
+// TODO:
+//- (void)setDestructiveButtonIndex:(NSInteger)destructiveButtonIndex;
+//- (void)setCancelButtonIndex:(NSInteger)cancelButtonIndex;
+
+- (BOOL)visible;
+- (NSUInteger)numberOfButtons;
 
 - (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;

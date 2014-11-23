@@ -41,7 +41,7 @@
                     <toolbarItems>
                         <barButtonItem title="Item" systemItem="action" id="WDA-00-5Dt">
                             <connections>
-                                <action selector="actionBBiTapped:" destination="BYZ-38-t0r" id="NWr-BC-54P"/>
+                                <action selector="actionBBITapped:" destination="BYZ-38-t0r" id="MJW-bz-Y43"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
